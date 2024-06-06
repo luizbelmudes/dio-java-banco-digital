@@ -8,8 +8,8 @@ public class Banco {
     public static void main(String[] args){
         Cliente jose = new Cliente("Jose","da Silva");
         Cliente joao = new Cliente("Joao", "Pinheiro");
-        Conta contaJose = new ContaCorrente(jose);
-        Conta contaJoao = new ContaCorrente(joao);
+        ContaCorrente contaJose = new ContaCorrente(jose);
+        ContaCorrente contaJoao = new ContaCorrente(joao);
 
         contaJose.depositar(500.0,false);
         contaJose.imprimirExtrato();
@@ -35,5 +35,10 @@ public class Banco {
         System.out.println("Limite de Credito do Joao: " +joao.getLimiteDeCredito());
         CreditoPessoal.pedirMaisCredito(joao);
         System.out.println("Limite de Credito do Joao: " +joao.getLimiteDeCredito());
+
+        contaJose.realizarEmprestimo(70000.00);
+        System.out.println("Limite de Credito do Jose: " +jose.getLimiteDeCredito());
+        contaJose.imprimirExtrato();
+
     }
 }

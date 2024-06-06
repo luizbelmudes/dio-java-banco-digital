@@ -66,4 +66,8 @@ public class Conta implements IConta{
                 ", cliente=" + cliente +
                 '}';
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
 }

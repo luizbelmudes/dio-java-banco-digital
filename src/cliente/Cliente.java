@@ -8,6 +8,7 @@ public class Cliente {
     public Cliente(String nome, String sobrenome){
         this.nome = nome;
         this.sobrenome = sobrenome;
+        this.limiteDeCredito = 1_000.00;
     }
 
     public void setLimiteDeCredito(double limiteDeCredito) {
@@ -24,6 +25,11 @@ public class Cliente {
 
     public String getSobrenome() {
         return sobrenome;
+    }
+
+    public void imprimirDadosDoCliente(){
+        System.out.println();
+        
     }
 
 }
