@@ -2,6 +2,7 @@ package com.bancodigital;
 import com.bancodigital.contas.Conta;
 import  cliente.Cliente;
 import com.bancodigital.contas.ContaCorrente;
+import com.bancodigital.emprestimo.CreditoPessoal;
 
 public class Banco {
     public static void main(String[] args){
@@ -26,5 +27,13 @@ public class Banco {
         contaJose.transferir(900.0,contaJoao);
         contaJose.imprimirExtrato();
         contaJoao.imprimirExtrato();
+
+        System.out.println("Limite de Credito do Jose: " +jose.getLimiteDeCredito());
+        CreditoPessoal.pedirMaisCredito(jose);
+        System.out.println("Limite de Credito do Jose: " +jose.getLimiteDeCredito());
+
+        System.out.println("Limite de Credito do Joao: " +joao.getLimiteDeCredito());
+        CreditoPessoal.pedirMaisCredito(joao);
+        System.out.println("Limite de Credito do Joao: " +joao.getLimiteDeCredito());
     }
 }

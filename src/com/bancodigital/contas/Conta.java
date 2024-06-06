@@ -53,7 +53,7 @@ public class Conta implements IConta{
         System.out.println("NOME CLIENTE: " +  cliente.getNome() + " " + cliente.getSobrenome());
         System.out.println("AGENCIA: " + agencia);
         System.out.println("CONTA: " + numero);
-        System.out.println("SALDO EM CONTA: " + saldo);
+        System.out.printf("SALDO EM CONTA: R$%.2f\n", saldo);
         System.out.println("-----------FIM EXTRATO---------");
     }
 

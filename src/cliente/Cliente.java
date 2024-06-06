@@ -3,6 +3,20 @@ package cliente;
 public class Cliente {
     private String nome;
     private String sobrenome;
+    private double limiteDeCredito;
+
+    public Cliente(String nome, String sobrenome){
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
+
+    public void setLimiteDeCredito(double limiteDeCredito) {
+        this.limiteDeCredito = limiteDeCredito;
+    }
+
+    public double getLimiteDeCredito() {
+        return limiteDeCredito;
+    }
 
     public String getNome() {
         return nome;
@@ -10,11 +24,6 @@ public class Cliente {
 
     public String getSobrenome() {
         return sobrenome;
-    }
-
-    public Cliente(String nome, String sobrenome){
-        this.nome = nome;
-        this.sobrenome = sobrenome;
     }
 
 }
