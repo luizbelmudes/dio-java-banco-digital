@@ -22,6 +22,7 @@ public class Conta implements IConta{
     public boolean sacar(double valor, boolean porTransferencia) {
         if (saldo >= valor){
             saldo -= valor;
+            System.out.printf("Foi sacado R$%.2f com sucesso!\n",valor);
         }else{
             if(!porTransferencia) {
                 System.out.println("Não há saldo o suficiente para este saque!");
@@ -36,7 +37,7 @@ public class Conta implements IConta{
     @Override
     public void depositar(double valor, boolean porTransferencia) {
         saldo += valor;
-        if (!porTransferencia) System.out.printf("Foi depositado R$%.2f com sucesso",valor);
+        if (!porTransferencia) System.out.printf("Foi depositado R$%.2f com sucesso!\n",valor);
     }
 
     @Override
@@ -47,6 +48,16 @@ public class Conta implements IConta{
 
     @Override
     public void imprimirExtrato() {
+        System.out.println(this.toString());
+    }
 
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "agencia=" + agencia +
+                ", numero=" + numero +
+                ", saldo=" + saldo +
+                ", cliente=" + cliente +
+                '}';
     }
 }
