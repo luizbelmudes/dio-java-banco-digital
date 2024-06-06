@@ -1,8 +1,8 @@
 package cliente;
 
 public class Cliente {
-    private String nome;
-    private String sobrenome;
+    private final String nome;
+    private final String sobrenome;
     private double limiteDeCredito;
 
     public Cliente(String nome, String sobrenome){
@@ -28,8 +28,10 @@ public class Cliente {
     }
 
     public void imprimirDadosDoCliente(){
-        System.out.println();
-        
+        System.out.println("-----------DADOS DO CLIENTE---------");
+        System.out.println("NOME CLIENTE: " + nome + " " + sobrenome);
+        System.out.printf("LIMITE DE CREDITO: R$%.2f\n", limiteDeCredito);
+        System.out.println("----------------FIM-----------------");
     }
 
 }

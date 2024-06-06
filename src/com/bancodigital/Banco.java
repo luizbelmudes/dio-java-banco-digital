@@ -40,5 +40,7 @@ public class Banco {
         System.out.println("Limite de Credito do Jose: " +jose.getLimiteDeCredito());
         contaJose.imprimirExtrato();
 
+        jose.imprimirDadosDoCliente();
+
     }
 }
