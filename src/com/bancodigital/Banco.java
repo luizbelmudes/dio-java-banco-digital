@@ -5,8 +5,8 @@ import com.bancodigital.contas.ContaCorrente;
 
 public class Banco {
     public static void main(String[] args){
-        Cliente jose = new Cliente();
-        Cliente joao = new Cliente();
+        Cliente jose = new Cliente("Jose","da Silva");
+        Cliente joao = new Cliente("Joao", "Pinheiro");
         Conta contaJose = new ContaCorrente(jose);
         Conta contaJoao = new ContaCorrente(joao);
 
