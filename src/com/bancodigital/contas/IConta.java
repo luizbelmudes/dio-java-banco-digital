@@ -1,9 +1,9 @@
 package com.bancodigital.contas;
 
 public interface IConta {
-    void sacar(double valor);
+    boolean sacar(double valor, boolean porTransferencia);
 
-    void depositar(double valor);
+    void depositar(double valor,boolean porTransferencia);
 
     void transferir(double valor, IConta contaDestino);
 

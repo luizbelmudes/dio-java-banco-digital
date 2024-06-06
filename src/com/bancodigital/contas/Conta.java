@@ -1,5 +1,5 @@
 package com.bancodigital.contas;
-import  cliente.Cliente
+import  cliente.Cliente;
 
 public class Conta implements IConta{
     //atributos
@@ -19,23 +19,30 @@ public class Conta implements IConta{
 
     //metodos
     @Override
-    public void sacar(double valor) {
+    public boolean sacar(double valor, boolean porTransferencia) {
         if (saldo >= valor){
             saldo -= valor;
         }else{
-            System.out.println("Não há saldo o suficiente para este saque!");
+            if(!porTransferencia) {
+                System.out.println("Não há saldo o suficiente para este saque!");
+            }else{
+                System.out.println("Não há saldo o suficiente para esta transferência");
+            }
+            return false;
         }
+        return true;
     }
 
     @Override
-    public void depositar(double valor) {
+    public void depositar(double valor, boolean porTransferencia) {
         saldo += valor;
-        System.out.printf("Foi depositado R$%.2f",valor);
+        if (!porTransferencia) System.out.printf("Foi depositado R$%.2f com sucesso",valor);
     }
 
     @Override
     public void transferir(double valor, IConta contaDestino) {
-
+        if(sacar(valor, true))
+            contaDestino.depositar(valor, true);
     }
 
     @Override
