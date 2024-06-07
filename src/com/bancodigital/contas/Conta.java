@@ -1,5 +1,9 @@
 package com.bancodigital.contas;
+
 import  cliente.Cliente;
+import com.bancodigital.contas.transacoes.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Conta implements IConta{
     //atributos
@@ -10,11 +14,13 @@ public class Conta implements IConta{
     protected int numero;
     protected double saldo;
     protected Cliente cliente;
+    protected List<Transacao> transacoes;
 
     public Conta (Cliente cliente) {
         this.agencia = AGENCIA_PADRAO;
         this.numero = SEQUENCIAL++;
         this.cliente = cliente;
+        this.transacoes = new ArrayList<>();
     }
 
     //metodos
@@ -22,7 +28,10 @@ public class Conta implements IConta{
     public boolean sacar(double valor, boolean porTransferencia) {
         if (saldo >= valor){
             saldo -= valor;
-            if (!porTransferencia) System.out.printf("Foi sacado R$%.2f com sucesso!\n",valor);
+            if (!porTransferencia) {
+                System.out.printf("Foi sacado R$%.2f com sucesso!\n", valor);
+                transacoes.add(new Transacao(TiposTransacao.SAQUE, valor, ""));
+            }
         }else{
             if(!porTransferencia) {
                 System.out.println("Não há saldo o suficiente para este saque!");
@@ -37,13 +46,18 @@ public class Conta implements IConta{
     @Override
     public void depositar(double valor, boolean porTransferencia) {
         saldo += valor;
-        if (!porTransferencia) System.out.printf("Foi depositado R$%.2f com sucesso!\n",valor);
+        if (!porTransferencia) {
+            System.out.printf("Foi depositado R$%.2f com sucesso!\n", valor);
+            transacoes.add(new Transacao(TiposTransacao.DEPOSITO, valor, ""));
+        }
     }
 
     @Override
     public void transferir(double valor, IConta contaDestino) {
-        if(sacar(valor, true))
+        if(sacar(valor, true)) {
             contaDestino.depositar(valor, true);
+            transacoes.add(new Transacao(TiposTransacao.TRANSFERECIA,valor,""));
+        }
     }
 
     @Override

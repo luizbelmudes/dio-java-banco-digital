@@ -14,6 +14,10 @@ public class ContaCorrente extends Conta{
     }
 
     public void guardarNaPoupanca(double valorParaGuardar, Conta contaPoupanca){
+        if(contaPoupanca.cliente != this.cliente){
+            System.out.println("Para guardar a conta poupanca deve ser do mesmo cliente");
+            return;
+        }
         if(contaPoupanca instanceof ContaPoupanca){
             this.transferir(valorParaGuardar,contaPoupanca);
 
