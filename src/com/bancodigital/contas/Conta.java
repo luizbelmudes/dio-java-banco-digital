@@ -97,6 +97,14 @@ public class Conta implements IConta{
         System.out.println("-----------FIM EXTRATO---------");
     }
 
+    public int getAgencia() {
+        return agencia;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
     @Override
     public String toString() {
         return "Conta{" +
