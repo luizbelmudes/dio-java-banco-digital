@@ -48,8 +48,8 @@ public class Conta implements IConta{
         saldo += valor;
         if (!porTransferencia) {
             System.out.printf("Foi depositado R$%.2f com sucesso!\n", valor);
-            transacoes.add(new Transacao(TiposTransacao.DEPOSITO, valor, ""));
         }
+        transacoes.add(new Transacao(TiposTransacao.DEPOSITO, valor, ""));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class Conta implements IConta{
         System.out.println("AGENCIA: " + agencia);
         System.out.println("CONTA: " + numero);
         System.out.printf("SALDO EM CONTA: R$%.2f\n", saldo);
-        System.out.println("-TRANSACAO--|---VALOR----|----DATA------");
+        System.out.println("-TRANSACAO----|---VALOR----|----DATA-E-HORA---------");
         for(Transacao t : transacoes){
             switch(t.getTipoTransacao()) {
                 case TiposTransacao.TRANSFERECIA:
@@ -81,7 +81,9 @@ public class Conta implements IConta{
                     System.out.print("Deposito........");
             }
 
-            System.out.println(t.getValorTransacao() + "....." + t.getDataHoraTransacao());
+            System.out.printf("R$%.2f", t.getValorTransacao());
+            System.out.println("....." + t.getDataHoraTransacao());
+
         }
         System.out.println("-----------FIM EXTRATO---------");
     }

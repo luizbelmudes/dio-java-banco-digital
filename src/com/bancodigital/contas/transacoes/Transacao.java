@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.text.DateFormat;
 
 public class Transacao {
-    private static Calendar calendario  = Calendar.getInstance();
+    private Calendar calendario;
 
     private TiposTransacao tipoTransacao;
     private Date dataHoraTransacao;
@@ -32,6 +32,7 @@ public class Transacao {
         this.tipoTransacao = tipoTransacao;
         this.valorTransacao = valorTransacao;
         this.descricaoTransacao = descricaoTransacao;
+        this.calendario = Calendar.getInstance();
         this.dataHoraTransacao = calendario.getTime();
     }
 }
