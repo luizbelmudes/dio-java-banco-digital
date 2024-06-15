@@ -12,6 +12,21 @@ public class Transacao {
     private double valorTransacao;
     private String descricaoTransacao;
 
+    public TiposTransacao getTipoTransacao() {
+        return tipoTransacao;
+    }
+
+    public Date getDataHoraTransacao() {
+        return dataHoraTransacao;
+    }
+
+    public double getValorTransacao() {
+        return valorTransacao;
+    }
+
+    public String getDescricaoTransacao() {
+        return descricaoTransacao;
+    }
 
     public Transacao(TiposTransacao tipoTransacao, double valorTransacao, String descricaoTransacao){
         this.tipoTransacao = tipoTransacao;

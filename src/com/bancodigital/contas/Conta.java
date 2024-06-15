@@ -68,6 +68,21 @@ public class Conta implements IConta{
         System.out.println("AGENCIA: " + agencia);
         System.out.println("CONTA: " + numero);
         System.out.printf("SALDO EM CONTA: R$%.2f\n", saldo);
+        System.out.println("-TRANSACAO--|---VALOR----|----DATA------");
+        for(Transacao t : transacoes){
+            switch(t.getTipoTransacao()) {
+                case TiposTransacao.TRANSFERECIA:
+                    System.out.print("Transferência...");
+                    break;
+                case TiposTransacao.SAQUE:
+                    System.out.print("Saque...........");
+                    break;
+                case TiposTransacao.DEPOSITO:
+                    System.out.print("Deposito........");
+            }
+
+            System.out.println(t.getValorTransacao() + "....." + t.getDataHoraTransacao());
+        }
         System.out.println("-----------FIM EXTRATO---------");
     }
 
