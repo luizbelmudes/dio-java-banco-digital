@@ -9,7 +9,7 @@ public class Emprestimo {
         double limiteDoCliente = cliente.getLimiteDeCredito();
         if (limiteDoCliente >= valorDoEmprestimo){
             cliente.setLimiteDeCredito(limiteDoCliente - valorDoEmprestimo);
-            contaCliente.depositar(valorDoEmprestimo, false);
+            contaCliente.depositar(valorDoEmprestimo, false, "Depósito de Empréstimo");
         }else{
             System.out.println("Nao há limite o suficiente para este empréstimo!");
         }

@@ -25,12 +25,12 @@ public class Conta implements IConta{
 
     //metodos
     @Override
-    public boolean sacar(double valor, boolean porTransferencia) {
+    public boolean sacar(double valor, boolean porTransferencia, String descricao) {
         if (saldo >= valor){
             saldo -= valor;
             if (!porTransferencia) {
                 System.out.printf("Foi sacado R$%.2f com sucesso!\n", valor);
-                transacoes.add(new Transacao(TiposTransacao.SAQUE, valor, ""));
+                transacoes.add(new Transacao(TiposTransacao.SAQUE, valor, descricao));
             }
         }else{
             if(!porTransferencia) {
@@ -44,19 +44,28 @@ public class Conta implements IConta{
     }
 
     @Override
-    public void depositar(double valor, boolean porTransferencia) {
+    public void depositar(double valor, boolean porTransferencia, String descricao) {
         saldo += valor;
         if (!porTransferencia) {
             System.out.printf("Foi depositado R$%.2f com sucesso!\n", valor);
         }
-        transacoes.add(new Transacao(TiposTransacao.DEPOSITO, valor, ""));
+        transacoes.add(new Transacao(TiposTransacao.DEPOSITO, valor, descricao));
     }
 
     @Override
-    public void transferir(double valor, IConta contaDestino) {
-        if(sacar(valor, true)) {
-            contaDestino.depositar(valor, true);
-            transacoes.add(new Transacao(TiposTransacao.TRANSFERECIA,valor,""));
+    public void transferir(double valor, Conta contaDestino, String descricao) {
+        if(sacar(valor, true, "")) {
+            String descricaoEfetivaDeposito;
+            String descricaoEfetivaTransacao;
+            if (descricao.isEmpty()){
+                descricaoEfetivaDeposito = "Transferência de " +  cliente.getNome() + " " + cliente.getSobrenome();
+                descricaoEfetivaTransacao = "Transferência para "+  contaDestino.cliente.getNome() + " " + contaDestino.cliente.getSobrenome();
+            }else{
+                descricaoEfetivaDeposito = descricao;
+                descricaoEfetivaTransacao = descricao;
+            }
+            contaDestino.depositar(valor, true, descricaoEfetivaDeposito);
+            transacoes.add(new Transacao(TiposTransacao.TRANSFERECIA,valor,descricaoEfetivaTransacao));
         }
     }
 
@@ -68,7 +77,7 @@ public class Conta implements IConta{
         System.out.println("AGENCIA: " + agencia);
         System.out.println("CONTA: " + numero);
         System.out.printf("SALDO EM CONTA: R$%.2f\n", saldo);
-        System.out.println("-TRANSACAO----|---VALOR----|----DATA-E-HORA---------");
+        System.out.println("-TRANSACAO----|---VALOR----|----------DATA-E-HORA----------|---------------DESCRICAO---------------|");
         for(Transacao t : transacoes){
             switch(t.getTipoTransacao()) {
                 case TiposTransacao.TRANSFERECIA:
@@ -82,7 +91,7 @@ public class Conta implements IConta{
             }
 
             System.out.printf("R$%.2f", t.getValorTransacao());
-            System.out.println("....." + t.getDataHoraTransacao());
+            System.out.println("....." + t.getDataHoraTransacao() + "....." + t.getDescricaoTransacao());
 
         }
         System.out.println("-----------FIM EXTRATO---------");

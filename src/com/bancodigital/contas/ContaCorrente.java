@@ -19,7 +19,7 @@ public class ContaCorrente extends Conta{
             return;
         }
         if(contaPoupanca instanceof ContaPoupanca){
-            this.transferir(valorParaGuardar,contaPoupanca);
+            this.transferir(valorParaGuardar,contaPoupanca,"Guardado em Poupança");
 
         }else{
             System.out.println("Esta conta não é poupança! Necessário que seja uma conta poupança");
