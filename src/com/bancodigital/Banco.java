@@ -381,7 +381,7 @@ public class Banco {
         if(!escolha.toLowerCase(Locale.ROOT).equals("y")) return;
 
         System.out.println("Neste Banco todos começam com R$1000,00 de crédito!" +
-                "\nAlém disso todos podem pedir mais crédito. Ao pedir mais crédito, é dado um valor a mais alatório" +
+                "\nAlém disso todos podem pedir mais crédito. Ao pedir mais crédito, é dado um valor a mais aleatório" +
                 "\nlimitado a R$50.000,00!" +
                 "\nVamos ver o limite de Jose, imprimindo os dados do Cliente?");
         System.out.println();
